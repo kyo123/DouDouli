@@ -1,0 +1,16 @@
+apply plugin: 'com.android.library'
+android {
+    compileSdkVersion 23
+    buildToolsVersion '25.0.0'
+    resourcePrefix "nohttp_res_"
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 22
+        versionCode 4
+        versionName '1.0.4'
+    }
+    productFlavors {
+    }
+}
+dependencies {
+}
