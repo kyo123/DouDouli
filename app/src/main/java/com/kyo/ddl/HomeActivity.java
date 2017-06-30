@@ -5,9 +5,6 @@ import com.kyo.ddl.view.base.KyoBaseActivity;
 
 public class HomeActivity extends KyoBaseActivity {
 
-    /*
-    我是注解。。。。。
-     */
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_home;
