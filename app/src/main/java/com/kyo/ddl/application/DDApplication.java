@@ -51,21 +51,24 @@ import android.content.Context;
 import com.kyo.ddl.utils.LogUtil;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
+import com.yolanda.nohttp.NoHttp;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class DDApplication extends Application {
     private static IWXAPI api;
     public static DDApplication instance;
-    private static List<Activity> activities = new ArrayList<Activity>();//任务管理器
+    private static List<Activity> activities = new ArrayList<Activity>();
     @Override
     public void onCreate() {
         super.onCreate();
+        NoHttp.initialize(this);
     }
 
     public static synchronized IWXAPI getWXApi(Context context) {
         //注册到微信
-        String APP_ID = "wx70332280afbe1f2b";
+        String APP_ID = "wx44448941879976964364";//随便写的，后期填充正式的id
         synchronized (IWXAPI.class){
             if(api==null)
             {

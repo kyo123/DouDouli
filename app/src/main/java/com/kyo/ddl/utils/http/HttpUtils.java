@@ -71,7 +71,7 @@ public class HttpUtils {
         HttpCallServer.getRequestInstance().add(context, 0, request,httpListener, false, true);
     }
     //表单提交数据
-    public static void sendPostByForm(Context context, final Map<String, String> map, StringBuilder url, HttpListener httpListener) {
+    public static void sendPostByForm(Context context, final Map<String, String> map, StringBuilder url,HttpListener httpListener) {
         //切记尽量不要使用匿名内部类，会导致内存溢出，最好在外部使用静态的内部类
         final Request<String> request = NoHttp.createStringRequest(url.toString(), RequestMethod.POST);
         for (Map.Entry<String, String> entry : map.entrySet()) {
@@ -80,13 +80,13 @@ public class HttpUtils {
         }
         HttpCallServer.getRequestInstance().add(context, 0, request, httpListener, false, true);
     }
-    public static void sendGet(final Context context, String url, final Map<String, String> map, HttpListener httpListener) {
-        final Request<String> request = NoHttp.createStringRequest(url, RequestMethod.GET);
-        LogUtil.e("参数", url);
+    public static void sendGet(final Context context, StringBuilder url, final Map<String, String> map, int what,HttpListener httpListener) {
+        final Request<String> request = NoHttp.createStringRequest(url.toString(), RequestMethod.GET);
+        LogUtil.e("参数", url.toString());
         for (Map.Entry<String, String> entry : map.entrySet()) {
             request.add(entry.getKey(),entry.getValue());
         }
-        HttpCallServer.getRequestInstance().add(context, 0, request, httpListener, false, true);
+        HttpCallServer.getRequestInstance().add(context, what, request, httpListener, false, true);
     }
     //上传图片
     public static void uploadImage(Context context, final Map<String, String> map, File file, StringBuilder url,final HttpListener httpListener) {

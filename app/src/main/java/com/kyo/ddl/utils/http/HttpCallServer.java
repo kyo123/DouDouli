@@ -55,10 +55,8 @@ public class HttpCallServer {
      * 下载队列.
      */
     public static DownloadQueue getDownloadInstance() {
-        synchronized (HttpCallServer.class) {
             if (downloadQueue == null)
                 downloadQueue = NoHttp.newDownloadQueue(2);
-        }
         return downloadQueue;
     }
 

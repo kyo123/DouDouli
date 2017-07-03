@@ -2,9 +2,12 @@ package com.kyo.ddl.view.base;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
 
 import com.kyo.ddl.application.DDApplication;
 import com.kyo.ddl.presenter.base.KyoBasePresenter;
+import com.kyo.ddl.utils.LogUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +34,8 @@ public abstract class KyoBaseActivity extends FragmentActivity{
      * 需要子类来实现，获取子类的IPresenter，一个activity有可能有多个IPresenter
      */
     protected abstract KyoBasePresenter[] getPresenters();
+
+    protected abstract boolean isHome();
 
     /**
      * 初始化presenters
@@ -61,6 +66,7 @@ public abstract class KyoBaseActivity extends FragmentActivity{
         super.onCreate(savedInstanceState);
         setFullScreen();
         setContentView(getLayoutResId());
+        isHome();
         addPresenters();
         onInitPresenters();
         initEvent();
@@ -118,6 +124,15 @@ public abstract class KyoBaseActivity extends FragmentActivity{
         DDApplication.removeActivity(this);
     }
 
-
-
+    //点击back的时候如果不是主页就直接finish掉,其他如果还有不同的可以重新super自定义
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(!isHome()){
+            finish();
+            LogUtil.e("不是主页就finish","不是主页就finish");
+            return false;
+        }
+        else
+            return super.onKeyDown(keyCode, event);
+    }
 }

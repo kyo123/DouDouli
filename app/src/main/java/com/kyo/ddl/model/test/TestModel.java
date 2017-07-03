@@ -1,8 +1,14 @@
 package com.kyo.ddl.model.test;
 
+import android.content.Context;
+
 import com.kyo.ddl.model.base.KyoBaseModel;
 import com.kyo.ddl.presenter.base.KyoBasePresenter;
 import com.kyo.ddl.utils.http.HttpCallServer;
+import com.kyo.ddl.utils.http.HttpListener;
+import com.kyo.ddl.utils.http.HttpUtils;
+
+import java.util.Map;
 
 /*
 
@@ -50,7 +56,7 @@ import com.kyo.ddl.utils.http.HttpCallServer;
                     Created by kyo on 17-7-3.
  */
 public class TestModel extends KyoBaseModel{
-    private void get(){
-
+    public void login(Context context, StringBuilder url, Map<String,String> map,int what, HttpListener httpListener){
+        HttpUtils.sendGet(context,url,map,what,httpListener);
     }
 }

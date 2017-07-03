@@ -98,33 +98,33 @@ public class HttpResponseListener<T> implements OnResponseListener<T> {
         StringBuilder builder=new StringBuilder();
         builder.delete(0,builder.length());
         if (exception instanceof NetworkError) {// 网络不好
-            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_please_check_network));
+//            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_please_check_network));
             builder.append(mContext.getResources().getString(R.string.error_please_check_network));
         } else if (exception instanceof TimeoutError) {// 请求超时
-            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_timeout));
+//            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_timeout));
             builder.append(mContext.getResources().getString(R.string.error_timeout));
         } else if (exception instanceof UnKnownHostError) {// 找不到服务器
-            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_not_found_server));
+//            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_not_found_server));
             builder.append(mContext.getResources().getString(R.string.error_not_found_server));
         } else if (exception instanceof URLError) {// URL是错的
-            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_url_error));
+//            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_url_error));
             builder.append(mContext.getResources().getString(R.string.error_url_error));
         } else if (exception instanceof NotFoundCacheError) {
             // 这个异常只会在仅仅查找缓存时没有找到缓存时返回
-            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_not_found_cache));
+//            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_not_found_cache));
             builder.append(mContext.getResources().getString(R.string.error_not_found_cache));
         } else if (exception instanceof ProtocolException) {
-            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_system_unsupport_method));
+//            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_system_unsupport_method));
             builder.append(mContext.getResources().getString(R.string.error_system_unsupport_method));
         } else if (exception instanceof ParseError) {
-            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_parse_data_error));
+//            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_parse_data_error));
             builder.append(mContext.getResources().getString(R.string.error_parse_data_error));
         } else {
-            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_unknow));
+//            LogUtil.e(TAG, mContext.getResources().getString(R.string.error_unknow));
             builder.append(mContext.getResources().getString(R.string.error_unknow));
         }
         //此处可以自行处理
-        LogUtil.e(TAG,"错误：" + exception.getMessage());
+//        LogUtil.e(TAG,"错误：" + exception.getMessage());
         if (callback != null)
             callback.onFailed(what, url, builder, exception, responseCode, networkMillis);
     }
