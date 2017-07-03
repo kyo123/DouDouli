@@ -18,7 +18,7 @@ public class HomeActivity extends KyoBaseActivity {
 
     @Override
     protected void onInitPresenters() {
-        
+
     }
 
     @Override

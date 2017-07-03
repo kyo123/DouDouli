@@ -1,12 +1,9 @@
-package com.kyo.ddl.presenter.wifi;
+package com.kyo.ddl.model.test;
 
-import com.kyo.ddl.presenter.base.KyoBaseView;
+import com.kyo.ddl.model.base.KyoBaseModel;
+import com.kyo.ddl.presenter.base.KyoBasePresenter;
+import com.kyo.ddl.utils.http.HttpCallServer;
 
-import java.util.List;
-
-/**
- * Created by Administrator on 2016/11/16.
- */
 /*
 
 
@@ -50,9 +47,10 @@ import java.util.List;
                     v@B@O8B@kPE@5vLj7uBOX0X0E@B@B:
                     @J:u0B@8XS8BjrLvv7@OkkEB@PYr@i
                    ZB,   MBMNEM@1U1FuUBB0GO@r   Bq
+                    Created by kyo on 17-7-3.
  */
-public interface WifiView extends KyoBaseView {
-   void showRedirectUrl(String url);
-   void showAplist(Object list);
+public class TestModel extends KyoBaseModel{
+    private void get(){
 
+    }
 }

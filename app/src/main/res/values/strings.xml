@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">兜兜哩</string>
+    <!--HTTP请求的相关内容提示-->
+    <string name="request_succeed">请求成功</string>
+    <string name="request_failed">请求失败</string>
+    <string name="request_json_result">请求方法：%1$s\n请求地址：%2$s\n响应数据：%3$s\n业务状态码：%4$s。</string>
+    <string name="request_succeed_head">请求成功, 请求方式为HEAD, 没有响应内容。</string>
+    <string name="request_method_not_allow">请求的方法被不服务器允许。</string>
+    <string name="request_method_head">请求方法为HEAD，没有响应内容。</string>
+    <string name="error_please_check_network">请检查网络。</string>
+    <string name="error_timeout">请求超时，网络不好或者服务器不稳定。</string>
+    <string name="error_not_found_server">未发现指定服务器，清切换网络后重试。</string>
+    <string name="error_url_error">URL错误。</string>
+    <string name="error_not_found_cache">没有找到缓存.</string>
+    <string name="error_system_unsupport_method">系统不支持的请求方法。</string>
+    <string name="error_parse_data_error">解析数据时发生错误。</string>
+    <string name="error_unknow">位置错误。</string>
 </resources>
