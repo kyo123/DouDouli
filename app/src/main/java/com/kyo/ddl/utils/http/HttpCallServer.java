@@ -21,6 +21,7 @@ import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.download.DownloadQueue;
 import com.yolanda.nohttp.rest.Request;
 import com.yolanda.nohttp.rest.RequestQueue;
+
 public class HttpCallServer {
 
     private static HttpCallServer callServer;
@@ -42,9 +43,11 @@ public class HttpCallServer {
     /**
      * 请求队列.
      */
-    public synchronized static HttpCallServer getRequestInstance() {
-        if (callServer == null)
-            callServer = new HttpCallServer();
+    public static HttpCallServer getRequestInstance() {
+        synchronized (HttpCallServer.class) {
+            if (callServer == null)
+                callServer = new HttpCallServer();
+        }
         return callServer;
     }
 
@@ -52,8 +55,10 @@ public class HttpCallServer {
      * 下载队列.
      */
     public static DownloadQueue getDownloadInstance() {
-        if (downloadQueue == null)
-            downloadQueue = NoHttp.newDownloadQueue(2);
+        synchronized (HttpCallServer.class) {
+            if (downloadQueue == null)
+                downloadQueue = NoHttp.newDownloadQueue(2);
+        }
         return downloadQueue;
     }
 

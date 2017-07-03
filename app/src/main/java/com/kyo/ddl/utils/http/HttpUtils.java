@@ -70,7 +70,6 @@ public class HttpUtils {
             request.setDefineRequestBodyForJson(json);
         HttpCallServer.getRequestInstance().add(context, 0, request,httpListener, false, true);
     }
-
     //表单提交数据
     public static void sendPostByForm(Context context, final Map<String, String> map, StringBuilder url, HttpListener httpListener) {
         //切记尽量不要使用匿名内部类，会导致内存溢出，最好在外部使用静态的内部类
@@ -81,7 +80,6 @@ public class HttpUtils {
         }
         HttpCallServer.getRequestInstance().add(context, 0, request, httpListener, false, true);
     }
-
     public static void sendGet(final Context context, String url, final Map<String, String> map, HttpListener httpListener) {
         final Request<String> request = NoHttp.createStringRequest(url, RequestMethod.GET);
         LogUtil.e("参数", url);
@@ -90,7 +88,6 @@ public class HttpUtils {
         }
         HttpCallServer.getRequestInstance().add(context, 0, request, httpListener, false, true);
     }
-
     //上传图片
     public static void uploadImage(Context context, final Map<String, String> map, File file, StringBuilder url,final HttpListener httpListener) {
         final Request<String> request = NoHttp.createStringRequest(url.toString(), RequestMethod.POST);
@@ -102,7 +99,7 @@ public class HttpUtils {
         if(file==null)
             return;
         else
-         binary= new FileBinary(file);
+            binary= new FileBinary(file);
         binary.setUploadListener(WHAT_UPLOAD_SINGLE, new OnUploadListener() {
             @Override
             public void onStart(int what) {
