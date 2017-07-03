@@ -1,5 +1,6 @@
-package com.kyo.ddl;
+package com.kyo.ddl.view.home;
 
+import com.kyo.ddl.R;
 import com.kyo.ddl.presenter.base.KyoBasePresenter;
 import com.kyo.ddl.view.base.KyoBaseActivity;
 
