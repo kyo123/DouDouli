@@ -54,12 +54,15 @@ import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import com.yolanda.nohttp.NoHttp;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class DDApplication extends Application {
     private static IWXAPI api;
     public static DDApplication instance;
     private static List<Activity> activities = new ArrayList<Activity>();
+    private static Set<Activity> activitySet=new HashSet<Activity>();
     @Override
     public void onCreate() {
         super.onCreate();
@@ -80,26 +83,41 @@ public class DDApplication extends Application {
         return api;
     }
 
+    public static boolean containActivity(Activity activity) {
+        boolean isContain=false;
+        for (Activity a:activitySet) {
+               if(a.getClass().getSimpleName().equals(activity.getClass().getSimpleName())){
+                   isContain=true;
+                   break;
+               }else
+                   continue;
+
+        }
+        LogUtil.e("是否包含", "是否包含-->"+isContain);
+        return isContain;
+    }
+
     public static synchronized void addActivity(Activity activity) {
-        if(!activities.contains(activity)){
-            activities.add(activity);
+        if(!containActivity(activity)){
+            activitySet.add(activity);
             LogUtil.e("add activity", "添加-->"+activity.getClass().getSimpleName());
         }
     }
 
     public static synchronized void removeActivity(Activity activity) {
-        if(activities.contains(activity))
-            activities.remove(activity);
+        if(containActivity(activity))
+            activitySet.remove(activity);
         LogUtil.e("remove activity", "删除-->"+activity.getClass().getSimpleName());
     }
 
     public static synchronized void finishAll() {
-        for (Activity activity : activities) {
-            if (activities.contains(activity) && activity!=null) {
+        LogUtil.e("finish all", "还有谁-->"+activitySet.size());
+        for (Activity activity : activitySet) {
+            if (containActivity(activity) && activity!=null) {
                 activity.finish();
             }
         }
-        LogUtil.e("finish all", "还有谁-->"+activities.size());
+        LogUtil.e("finish all", "还有谁-->"+activitySet.size());
     }
 
 
